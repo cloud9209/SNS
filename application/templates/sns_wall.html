@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div id="table_div"> 
+	<table>
+		<tr class="upper_tr">
+			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
+		</tr>
+
+	</table>
+
+	<table>
+		<tr class="upper_tr">
+			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
+		</tr>
+
+	</table>
+
+	<table>
+		<tr class="upper_tr">
+			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
+		</tr>
+
+	</table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,180 @@
+
+#write_post_box{
+	width: 1000px;
+	height: 500px;
+}
+
+/* layout page style */
+
+.top_div{
+	height: 100px;
+	width: 100%;
+	border-bottom: 5px solid black;
+}
+#user_info_div{
+	height: 40px;
+	margin-left: 20px;
+}
+#under_user_info_div{
+	height: 70px;
+}
+
+#profile_pic{
+	float: right;
+	width: 25px;
+	height: 30px;
+}
+#profile_name{
+	float: right;
+	margin-left: 20px;
+}
+
+#top_right_menu{
+	font-size: 13px;
+	margin-top: 20px;
+	float: right;
+	margin-right : 30px;
+}
+#top_left_menu{
+	font-weight: bold;
+	font-size: 24px;
+	margin-top: 10px;
+	float: left;
+	margin-left : 30px;
+}
+#menu_WRITE_POST{
+	margin-left: 20px;
+}
+
+#menu_SIGN_UP{
+	margin-right: 20px;
+}
+/* layout page style */
+
+
+/* login page style */
+
+#login_div{
+	width: 230px;
+	margin-top: 100px;
+	margin-left: 550px;
+}
+#real_login_div{
+	margin-top: 25px;
+}
+
+#pass_name_box{
+	width: 123px;
+}
+
+/* login page style */
+
+#signup_div{
+	width: 230px;
+	margin-top: 100px;
+	margin-left: 550px;
+}
+
+#email_box{
+	width: 160px;
+}
+
+#pass_box{
+	width: 126px;
+
+}
+
+#pass_check_box{
+	width: 115px;
+}
+
+#signup_submit_div{
+	width: 100%;
+}
+#sign_up_button{
+	float: left;
+}
+#admin_text{
+	margin-right: 8px;
+	float: right;
+	font-size: 14px;
+}
+
+#write_post_div{
+	margin-top: 50px;
+	margin-left: 170px;
+	width: 1000px;
+}
+
+.secret_box{
+	float: left;
+	font-size: 12px;
+}
+#under_write_post{
+	margin-top: 10px;
+}
+
+.write_post_right_align{
+	float:right;
+}
+
+/* wall style */
+#table_div{
+	margin-top: 50px;
+	margin-left: 330px;
+}
+
+#post_user_pic{
+	float: left;
+	width: 25px;
+	height: 30px;
+}
+
+table{
+	margin-bottom: 40px;
+	width : 700px;
+	height: 80px;
+}
+
+.upper_tr{
+	height: 15px;
+}
+.comment_user_pic_td{
+	width: 30px;
+}
+
+.user_pic_td{
+	width: 40px;
+}
+.td_contents{
+	border-bottom: 1px solid black;
+}
+
+.posted_time{
+	font-size: 13px;
+	border-bottom: 2px solid black;
+}
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+}
+
+/* wall style */
+
+#one_post{
+	margin-top: 30px;
+	margin-left: 330px;
+}
+#comment_table{
+	background-color: #d0d0d0;
+}
+.comment_td{
+	border-bottom: 1px dashed black;
+}
+#comment_text_box{
+	width:600px;
+	height: 20px;
+}
+

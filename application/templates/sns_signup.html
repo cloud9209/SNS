@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+	<div id="signup_div">
+		<h2>Signup</h2>
+		<hr>
+		<p>Email : <input type="text" name="email" id="email_box"></p>
+			<!-- <p id = "email_condition_error">email does not match</p>
+			<p id = "email_exist_error">email already exist!</p> -->
+		
+		<p>Password : <input type="password" name="password" id="pass_box"></p>
+			<!-- <p id = "pass_error">pass does not match</p> -->
+		<p>Pass Check : <input type="password" name="password_check" id="pass_check_box"></p>
+			<!-- <p id = "pass_check_error">pass does not match</p> -->
+		<div id = "signup_submit_div">
+			<div><input type="submit" value="Sign Up" id="sign_up_button"></div>
+			<div id = "admin_text"><input type="checkbox" name="admin">admin</div>		
+		</div>
+
+
+	</div>
+{% endblock %}

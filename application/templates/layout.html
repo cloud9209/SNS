@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Simon SNS</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sns_stylesheet.css') }}">
+</head>
+<body>
+
+	<div class="top_div">
+		<div id="user_info_div">
+			<p id="profile_name">Welcome! Simon Jo</p>
+
+			<img id="profile_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/>	
+		</div><br>
+
+		<div id="under_user_info_div">
+			<div id="top_left_menu">
+				<a href="{{ url_for('show_wall') }}" style="text-decoration:none">WALL</a>	
+				<a href="{{ url_for('write_post') }}" style="text-decoration:none" id="menu_WRITE_POST">WRITE POST</a>
+			</div>
+
+			<div id="top_right_menu">
+				<a href="{{ url_for('sign_up') }}" style="text-decoration:none" id="menu_SIGN_UP" >SIGN UP</a>
+				<a href="{{ url_for('log_in') }}" style="text-decoration:none">LOGIN</a>
+			</div>
+		</div>
+	</div>
+	
+
+	{% block body %}
+	{% endblock %}
+</body>
+</html>

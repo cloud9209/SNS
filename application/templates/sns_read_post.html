@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="one_post">
+	<table>
+		<tr class="upper_tr">
+			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="td_contents posted_time">2014. 8. 7 03:37 posted</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="td_contents">
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<table id="comment_table">
+					<tr>
+						<td class="comment_user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+						<td class="comment_td">what r u saying</td>
+						<td><input type="submit" value="revise"></td>
+						<td><input type="submit" value="delete"></td>
+					</tr>
+					<tr>
+						<td class="comment_user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+						<td class="comment_td">fuck u</td>
+						<td><input type="submit" value="revise"></td>
+						<td><input type="submit" value="delete"></td>
+					</tr>
+					<tr>
+						<td class="comment_user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+						<td class="comment_td">what r u saying</td>
+						<td><input type="submit" value="revise"></td>
+						<td><input type="submit" value="delete"></td>
+					</tr>
+					<tr>
+						<td class="comment_user_pic_td"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></td>
+						<td><input type="text" id="comment_text_box"></td>
+						<td class="secret_box"><input type="checkbox" name="secret">secret</td>
+						<td><input type="submit" value="submit"></td>
+					</tr>
+
+				</table>
+
+			</td>
+		</tr>
+
+	</table>
+
+
+</div>
+{% endblock %}
