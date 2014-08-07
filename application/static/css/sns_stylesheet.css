@@ -87,6 +87,24 @@
 #pass_check_box{
 	width: 115px;
 }
+#sex_choice_div{
+	height: 20px;
+}
+.male_left{
+	float: left;
+}
+
+.female_right{
+	float: right;
+	margin-right: 7px;
+}
+
+#birth_box{
+	width: 140px;
+}
+#mobile_box{
+	width: 150px;
+}
 
 #signup_submit_div{
 	width: 100%;
