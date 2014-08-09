@@ -3,11 +3,6 @@ from schema import *
 
 def add_user(data):
 
-	print "useruseruseruseruseruseruseruseruseruseruser"
-	# pass
-	for key in data :
-		print data[key]
-
 	user = User(
 		email		= data['email'],
 		username	= data['username'],

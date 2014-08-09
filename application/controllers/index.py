@@ -5,7 +5,7 @@ from application.models.schema import *
 from application.models import user_manager
 
 
-# User.query.filter(User.email == '')
+# User.query.filter(User.name == '')
 # user = User.query.get(id)
 # user.username = ''
 # db.session.commit()
@@ -35,9 +35,9 @@ def log_in() :
 		
 		if check == True:
 			session['logged_in'] = True
+			session['email'] = request.form['login_email']
 
-			print "good"
-			return render_template("sns_wall.html", login_user_name = request.form['login_email'])
+			return render_template("layout.html")
 		else:
 			return render_template("sns_login.html")			
 	else:
@@ -51,6 +51,18 @@ def write_post() :
 @app.route('/wall')
 def show_wall() :
 	return render_template("sns_wall.html")
+
+
+@app.route('/', defaults={'wall_id':0})
+@app.route('/timeline/<int:wall_id>')
+def timeline(wall_id):
+
+	user = User.query.get(wall_id)
+	host_name = user.username
+
+	return render_template("sns_wall.html", wall_host_name = host_name)
+
+
 
 @app.route('/read_post')
 def read_post():

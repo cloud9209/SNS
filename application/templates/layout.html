@@ -9,7 +9,9 @@
 
 	<div class="top_div">
 		<div id="user_info_div">
-			<p id="profile_name">Welcome! Simon Jo</p>
+			{% if session %} 
+			<p id="profile_name">Welcome {{ session.email }} !</p>
+			{% endif %}
 
 			<img id="profile_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/>	
 		</div><br>

@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
-<p> welcome {{ login_user_name }} !</p>
+<p> it's {{ wall_host_name }}'s wall !</p>
+
 <div id="table_div"> 
 	<table>
 		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 1) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
 			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
 		</tr>
 		<tr>
@@ -16,7 +17,7 @@
 
 	<table>
 		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 2) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/namdee.jpg') }}"/></a></td>
 			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
 		</tr>
 		<tr>
@@ -28,7 +29,7 @@
 
 	<table>
 		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('show_wall') }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
+			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 3) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/soyeon.jpg') }}"/></a></td>
 			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
 		</tr>
 		<tr>
