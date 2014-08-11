@@ -3,17 +3,26 @@
 	<p> it's {{ wall_host_name }}'s wall !</p>
 	<div id="table_div"> 
 		{% for post in posts %}
+		<form action="{{ url_for('delete_post', post_id = post.id) }}" method='post'>
+
 			<table>
 				<tr class="upper_tr">
-					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.wall_id) }}"> {{ post.user_id }} </a></td>
-					<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none"> {{ post.created_time }}</a></td>
+					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id) }}"> {{ post.user_id }} </a></td>
+					<td class="td_contents posted_time"><a href="{{ url_for('read_post', post_id = post.id) }}" style="text-decoration:none"> {{ post.created_time }}</a></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none"> {{ post.body }}</a></td>
+					<td class="td_contents"><a href="{{ url_for('read_post', post_id = post.id ) }}" style="text-decoration:none"> {{ post.body }}</a></td>
+				</tr>
+				{% if session.user_id == post.user_id %}				
+				<tr>
+					<td><input type="submit" value="delete"></td>
 				</tr>
 
+				{% endif %}
 			</table>
+
+		</form>
 
 		{% endfor %}
 	</div>

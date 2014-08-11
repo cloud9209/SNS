@@ -15,10 +15,15 @@
 
 			<img id="profile_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/>	
 		</div><br>
-
+			
 		<div id="under_user_info_div">
 			<div id="top_left_menu">
-				<a href="{{ url_for('show_wall') }}" style="text-decoration:none">WALL</a>	
+
+			{% if "wall_host_id" in session %}
+				<a href="{{ url_for('timeline', wall_id = session.wall_host_id) }}" style="text-decoration:none">WALL</a>
+			{% elif "wall_host_id" not in session %}
+				<a href="{{ url_for('show_wall') }}" style="text-decoration:none">WALL</a>
+			{% endif %}
 				<a href="{{ url_for('write_post') }}" style="text-decoration:none" id="menu_WRITE_POST">WRITE POST</a>
 			</div>
 
@@ -28,7 +33,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	{% block body %}
 	{% endblock %}

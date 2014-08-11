@@ -20,7 +20,7 @@ def add_user(data):
 def login_check(email, password):
 	return User.query.filter(User.email == email, User.password == db.func.md5(password)).count() != 0
 
-	
+
 
 def add_post(data):
 	post = Post(
@@ -34,7 +34,15 @@ def add_post(data):
 	)
 	db.session.add(post)
 	db.session.commit()
-	
 
-#foreign key
+
+def add_comment(data):
+	comment = Comment(
+		body			= data['comment_box'],
+		post_id			= session['read_post_id'],
+		user_id			= session['user_id']
+	)
+	
+	db.session.add(comment)
+	db.session.commit()
 	
