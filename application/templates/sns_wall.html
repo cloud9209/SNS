@@ -1,43 +1,20 @@
 {% extends "layout.html" %}
 {% block body %}
-<p> it's {{ wall_host_name }}'s wall !</p>
+	<p> it's {{ wall_host_name }}'s wall !</p>
+	<div id="table_div"> 
+		{% for post in posts %}
+			<table>
+				<tr class="upper_tr">
+					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.wall_id) }}"> {{ post.user_id }} </a></td>
+					<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none"> {{ post.created_time }}</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none"> {{ post.body }}</a></td>
+				</tr>
 
-<div id="table_div"> 
-	<table>
-		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 1) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/profile.jpg') }}"/></a></td>
-			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
-		</tr>
+			</table>
 
-	</table>
-
-	<table>
-		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 2) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/namdee.jpg') }}"/></a></td>
-			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
-		</tr>
-
-	</table>
-
-	<table>
-		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = 3) }}"><img id="post_user_pic" src="{{ url_for('static', filename='res/img/soyeon.jpg') }}"/></a></td>
-			<td class="td_contents posted_time"><a href="{{ url_for('read_post') }}" style="text-decoration:none">2014. 8. 7 03:37 posted</a></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="td_contents"><a href="{{ url_for('read_post') }}" style="text-decoration:none">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></td>
-		</tr>
-
-	</table>
-
-</div>
+		{% endfor %}
+	</div>
 {% endblock %}

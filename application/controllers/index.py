@@ -35,7 +35,11 @@ def log_in() :
 		
 		if check == True:
 			session['logged_in'] = True
-			session['email'] = request.form['login_email']
+			
+			user = User.query.filter(User.email == request.form['login_email']).first()
+			session['email'] = user.email
+			session['user_id'] = user.id
+			session['user_name'] = user.username
 
 			return render_template("layout.html")
 		else:
@@ -44,9 +48,24 @@ def log_in() :
 		pass
 	return render_template("sns_login.html")
 
-@app.route('/write_post')
+
+
+@app.route('/write_post', methods=['POST', 'GET'])
 def write_post() :
+
+	if "secret" in request.form:
+		session['post_is_secret'] = 1
+	else:
+		session['post_is_secret'] = 0
+
+	if request.method == 'POST':
+		user_manager.add_post(request.form);
+	
+
+
 	return render_template("sns_write_post.html")
+
+
 
 @app.route('/wall')
 def show_wall() :
@@ -58,9 +77,14 @@ def show_wall() :
 def timeline(wall_id):
 
 	user = User.query.get(wall_id)
-	host_name = user.username
 
-	return render_template("sns_wall.html", wall_host_name = host_name)
+	posts = user.wall_posts
+
+	session['wall_host_id'] = user.id
+	session['wall_host_name'] = user.username
+
+
+	return render_template("sns_wall.html", wall_host_name = session['wall_host_name'], posts = posts)
 
 
 
