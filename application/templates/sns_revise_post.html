@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+
+	<form action=" {{ url_for('revise_post', post_id = post.id) }}" method = 'post'>
+		<div id="write_post_div">
+			<textarea rows="4" cols="50" name="write_post_box">{{ post.body }} </textarea><br>
+			<div id="under_write_post">
+				<input class="write_post_right_align" type="submit" value="SUBMIT">
+				<input class="write_post_right_align" type="button" value="LIST">
+				<div class="secret_box"><input type="checkbox" name="secret" >secret</div>
+			</div>	
+		</div>	
+	</form>
+	
+
+{% endblock %}

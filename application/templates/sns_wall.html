@@ -7,7 +7,7 @@
 
 			<table>
 				<tr class="upper_tr">
-					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id) }}"> {{ post.user_id }} </a></td>
+					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id) }}"> {{ post.user.username }} </a></td>
 					<td class="td_contents posted_time"><a href="{{ url_for('read_post', post_id = post.id) }}" style="text-decoration:none"> {{ post.created_time }}</a></td>
 				</tr>
 				<tr>

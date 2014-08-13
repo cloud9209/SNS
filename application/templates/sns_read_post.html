@@ -3,25 +3,39 @@
 
 <div id="one_post">
 	<table>
-		<tr class="upper_tr">
-			<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id ) }}">{{ post.user_id }}</a></td>
-			<td class="td_contents posted_time">{{ post.created_time }}</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="td_contents">{{ post.body }}</td>
-		</tr>
+
+		<form action=" {{ url_for('revise_post', post_id = post.id) }}">
+			<tr class="upper_tr">
+				<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id ) }}">{{ post.user.username }}</a></td>
+				<td class="td_contents posted_time">{{ post.created_time }}
+				{% if post.user_id == session.user_id %}
+				<input type="submit" value="revise" id = "post_revise_button">
+				{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="td_contents">{{ post.body }}</td>
+			</tr>
+		</form>
+
+
 		<tr>
 			<td></td>
 			<td>
 				<table id="comment_table">
 					{% for comment in comments %}
-					<tr>
-						<td class="comment_user_pic_td"><a href="{{ url_for('timeline', wall_id = comment.user_id) }}">{{ comment.user_id }}</a></td>
-						<td class="commsent_td">{{ comment.body }}</td>
-						<td><input type="submit" value="revise"></td>
-						<td><input type="submit" value="delete"></td>
-					</tr>
+					<form action=" {{ url_for('delete_comment', comment_id = comment.id) }} " method='post'>
+						<tr>
+							<td class="comment_user_pic_td"><a href="{{ url_for('timeline', wall_id = comment.user_id) }}">{{ comment.user.username }}</a></td>
+							<td class="commsent_td">{{ comment.body }}</td>
+						{% if comment.user_id == session.user_id %}
+							<td><input type="submit" value="delete"></td>
+						{% endif %}
+						</tr>
+					</form>
+
+					
 					{% endfor %}
 
 					<tr>
