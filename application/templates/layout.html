@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% block head %}
 	<meta charset="UTF-8">
 	<title>Welcome to Simon SNS</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sns_stylesheet.css') }}">
+
+	{% endblock %}
+	
+	
 </head>
 <body>
 
@@ -25,6 +30,7 @@
 				<a href="{{ url_for('show_wall') }}" style="text-decoration:none">WALL</a>
 			{% endif %}
 				<a href="{{ url_for('write_post') }}" style="text-decoration:none" id="menu_WRITE_POST">WRITE POST</a>
+				<a href="{{ url_for('user_list') }}" style="text-decoration:none" id="menu_USER_LIST">USER LIST</a>
 			</div>
 
 			<div id="top_right_menu">
@@ -32,8 +38,13 @@
 				<a href="{{ url_for('log_in') }}" style="text-decoration:none">LOGIN</a>
 			</div>
 		</div>
-	</div>
+		
+		{% for user in users %}
+			<a href="{{ url_for('timeline', wall_id = user.id) }}" class = 'username_button'> {{ user.username }} </a><br>
+		{% endfor %}
 
+	</div>
+	
 
 	{% block body %}
 	{% endblock %}

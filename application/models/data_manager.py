@@ -19,11 +19,6 @@ def add_post(data):
 	db.session.commit()
 
 
-# def revise_post_model(post):
-# 	post = Post.query.get(id)
-# 	post.username = ''
-# 	db.session.commit()
-
 def delete_post_model(post_id):
 	post = Post.query.get(post_id)
 	db.session.delete(post)

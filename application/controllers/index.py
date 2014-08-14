@@ -14,7 +14,15 @@ from application.models import user_manager, data_manager
 @app.route('/')
 @app.route('/index')
 def index() :
+	print "index hi!!!!!!!!!!!"
 	return render_template("layout.html")
+
+@app.route('/user_list')
+def user_list() :
+	users = User.query.all()
+
+	return render_template("layout.html", users = users)
+
 
 @app.route('/signup', methods=['POST', 'GET'])
 def sign_up() :
@@ -48,7 +56,6 @@ def log_in() :
 	return render_template("sns_login.html")
 
 
-
 @app.route('/wall')
 def show_wall() :
 	return render_template("sns_wall.html")
@@ -57,13 +64,41 @@ def show_wall() :
 @app.route('/', defaults={'wall_id':0})
 @app.route('/timeline/<int:wall_id>')
 def timeline(wall_id):
+	print "timeline hi!!!!!!!!!!!!"
 	user = User.query.get(wall_id)
 	posts = user.wall_posts
 
 	session['wall_host_id'] = user.id
 	session['wall_host_name'] = user.username
+	print session['wall_host_id']
 
 	return render_template("sns_wall.html", wall_host_name = session['wall_host_name'], posts = posts, wall_id = session['wall_host_id'])
+
+@app.route('/get_5_post', methods=['POST', 'GET'])
+def get_5_post():
+	if request.method == 'POST':
+		five_posts = Post.query.filter(Post.wall_id == session['wall_host_id']).order_by(db.desc(Post.edited_time)).limit(5).all()		
+		# print five_posts[0].user.username
+
+		# post_list = []
+		
+		# for post in five_posts:
+		# 	post_content = {
+		# 	"user_name" : "",
+		# 	"body" : "",
+		# 	"created_time" : ""
+		# 	}
+		# 	post['user_name'] = post.user.username
+		# 	post['body'] = post.body
+		# 	post['created_time'] = post.created_time
+
+		# 	post_list.append(post_content)
+
+		# datas = json.dumps(post_list)
+
+	return render_template("sns_wall_2.html", five_posts = five_posts)
+	# return datas
+
 
 @app.route('/write_post', methods=['POST', 'GET'])
 def write_post() :

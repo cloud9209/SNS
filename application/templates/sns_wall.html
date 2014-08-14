@@ -1,10 +1,18 @@
 {% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-2.1.1.min.js')}}"></script>
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-ui.min.js')}}"></script>
+	<script src="{{ url_for('static', filename = 'js/ajax.js')}}"></script>
+{% endblock %}
 {% block body %}
 	<p> it's {{ wall_host_name }}'s wall !</p>
 	<div id="table_div"> 
+
+
+<!-- 
 		{% for post in posts %}
 		<form action="{{ url_for('delete_post', post_id = post.id) }}" method='post'>
-
 			<table>
 				<tr class="upper_tr">
 					<td class="user_pic_td"><a href="{{ url_for('timeline', wall_id = post.user_id) }}"> {{ post.user.username }} </a></td>
@@ -18,12 +26,12 @@
 				<tr>
 					<td><input type="submit" value="delete"></td>
 				</tr>
-
 				{% endif %}
 			</table>
-
 		</form>
-
 		{% endfor %}
+ -->
+
+
 	</div>
 {% endblock %}
