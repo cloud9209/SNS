@@ -71,33 +71,22 @@ def timeline(wall_id):
 	session['wall_host_id'] = user.id
 	session['wall_host_name'] = user.username
 	print session['wall_host_id']
+	session["scroll_count"] = 0
+
 
 	return render_template("sns_wall.html", wall_host_name = session['wall_host_name'], posts = posts, wall_id = session['wall_host_id'])
 
 @app.route('/get_5_post', methods=['POST', 'GET'])
 def get_5_post():
+
+
 	if request.method == 'POST':
-		five_posts = Post.query.filter(Post.wall_id == session['wall_host_id']).order_by(db.desc(Post.edited_time)).limit(5).all()		
-		# print five_posts[0].user.username
-
-		# post_list = []
+		all_posts = Post.query.filter(Post.wall_id == session['wall_host_id']).order_by(db.desc(Post.edited_time))
+		five_posts = all_posts.slice(int(request.form["offset"]) , int(request.form["offset"])+5)
 		
-		# for post in five_posts:
-		# 	post_content = {
-		# 	"user_name" : "",
-		# 	"body" : "",
-		# 	"created_time" : ""
-		# 	}
-		# 	post['user_name'] = post.user.username
-		# 	post['body'] = post.body
-		# 	post['created_time'] = post.created_time
-
-		# 	post_list.append(post_content)
-
-		# datas = json.dumps(post_list)
-
+		# if five_posts.count() == 0:
+		# 	return ""
 	return render_template("sns_wall_2.html", five_posts = five_posts)
-	# return datas
 
 
 @app.route('/write_post', methods=['POST', 'GET'])
