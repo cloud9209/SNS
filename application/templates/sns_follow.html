@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-2.1.1.min.js')}}"></script>
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-ui.min.js')}}"></script>
+	<script src="{{ url_for('static', filename = 'js/follow_ajax.js')}}"></script>
+{% endblock %}
+{% block body %}
+	<input type="text" id="to_find_user" onkeyup = "find_user()">
+
+	<table id = "found_user_list">
+		
+	</table>
+
+{% endblock %}

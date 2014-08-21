@@ -37,9 +37,8 @@ $(document).ready(function(){
 							last = true;
 						}
 						else{
-							$('#table_div').append(datas);	
-						}	
-
+							$('#table_div').append(datas);
+						}
 					},
 					error : function(){
 						console.log("error");
@@ -53,7 +52,7 @@ $(document).ready(function(){
 				});
 			}
 		}
-	});		
+	});
 });
 
 

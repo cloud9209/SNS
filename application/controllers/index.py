@@ -14,7 +14,6 @@ from application.models import user_manager, data_manager
 @app.route('/')
 @app.route('/index')
 def index() :
-	print "index hi!!!!!!!!!!!"
 	return render_template("layout.html")
 
 @app.route('/user_list')
@@ -22,6 +21,20 @@ def user_list() :
 	users = User.query.all()
 
 	return render_template("layout.html", users = users)
+
+@app.route('/find_user_list', methods=['POST', 'GET'])
+def find_user_list():
+
+	if request.method == 'POST':
+		character = request.form["character"]
+		
+
+		found_user_list = User.query.filter(User.username.like('%' + character + '%')).all()
+
+		return render_template("sns_follow_2.html", found_user_list = found_user_list)
+
+	return render_template("sns_follow.html")
+
 
 
 @app.route('/signup', methods=['POST', 'GET'])
