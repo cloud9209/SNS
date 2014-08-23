@@ -1,0 +1,37 @@
+0. data_manager.py -> 
+        Split to post_manager.py & comment_manager.py 
+        or 
+        article_manager.py
+
+  - data라는 단어는 너무 Trivial함.
+    당연히 모델이니까 데이터를 관리하겠지.
+    => 따라서 data_manager라고 하면 무슨 데이터를 가공하는지 알 수 없음.
+    => 이전의 예제에서는 파일입출력 한개밖에 없으니 넣었던 것.
+       ( 사실 그것도 account_manager.py 로 되어야 맞겠지 )
+
+  - file_manager.py도 해당 파이썬 코드가 모든 파일을 담당하는게 아니라면
+    이름이 바뀌어야 가독성이 좋음
+
+    이 앱에서 파일입출력은 profile image밖에 없어 -> 괜춘
+    이거말고 Cloud Storage에서 자기소개같은것도 하고 있어 -> 
+    file_manager에서 함수이름을 다르게 해주던가
+    짤라서 다른 파일로 작성하던가.
+
+1. article_manager.py -> from schema import *
+
+  - 각각 model도 해당하는 기능의 분화가 있기 마련.
+    article_manager에서는 Post와 Comment만 가지고 다 할 수 있음
+    (그럴 수 있도록 backref가 사용됨.)
+    즉, from schema import Post, Comment 만으로도 충분함.
+
+  - Session 적당히.....
+
+2. file_manager.py -> def save_file(file, filepath) :
+
+  - file은 python에서 예약되어있는 명령어임.
+    (코드카데미에서 with file('name.txt', 'r') as text : x = text.read())
+    즉, 저렇게 인자로 받아버리면 위와같은 함수를 사용못하게 됨.
+
+3. user_manager.py -> import datetime
+
+  - 사용하지 않는 모듈은 import해주지 맙시다.

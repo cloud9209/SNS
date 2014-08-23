@@ -1,7 +1,6 @@
 from application import db
-from schema import *
+from schema import User
 from flask import session
-import datetime
 
 def get_user(id):
 	return User.query.get(id)
@@ -28,3 +27,6 @@ def add_profile_image(user_id, filename):
 	user.profile_image = filename
 
 	db.session.commit()
+
+def get_all() :
+	return User.query.all()

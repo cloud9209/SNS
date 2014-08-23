@@ -1,0 +1,92 @@
+1. from application.models.schema import *
+
+    Schema에는 User, Post, Comment, Follow가 있는데,
+    이 네가지 모두 MODEL에서 사용해야 하는 것.
+    즉, CONTROLLER에서는 Schema를 불러오면 안됨.
+
+	def user_list() :
+		users = User.query.all()
+
+	이런건 models에서 전부 해줬어야 했던 것.
+
+2. from application.models.user_manager import *
+    
+  - 이렇게 하면 user_manager.get_user(id) 대신
+    get_user(id) 로 할 수 있는 편리함이 있지만,
+    반대로 namespace 중복으로 인한 에러의 원인이 되기도 함.
+
+    from flask import session과 from db import session을
+    동시에 사용하지 않는 이유가 이것.
+
+  - 함수명은 직관적으로 지어야 함.
+    직관적이라는건 코드를 보는 사람이 함수명과 input만 가지고
+    어떤 짓을 하는 함수인지 이해하기 쉽도록 하는 것.
+    이러한 '이해'의 바탕은 module이름부터 시작됨
+    user_manager.add()
+    post_manager.add()
+    comment_manager.add()
+    각각의 함수명은 같지만 다른 의미를 가짐.
+
+    이러한 것을 바탕으로, modelname.functionname(parameter) 형식으로
+    사용하도록 권장함.
+
+  - from xxx imort * 같이 쓰는건 해당 프로젝트의 성격상
+    '당연히 이건 그것밖에 없지' 라고 느껴지는 것을 쓰도록.
+    ex) render_template, Flask, session, ...
+
+3. index.py
+
+  - index.py에는 보통 기본 error handler와 첫 페이지를 넣기 마련.
+    나머진 각자의 기능을 대표하는 이름으로 잘라서 다른 페이지로 넣어주세요.
+
+  	지금 나눈것 : timeline.py, comment.py, auth.py(: login/signup)
+  	각각에서 필요한 import 추가해주세요
+
+4. test.py -> 삭제
+   
+  - github에 올릴 때에는 실행가능한(에러가 없는 버전의), 
+    필요한 파일만을 올리는 것을 추천.
+
+5. session
+
+  - user_id, wall_id를 제외한 모든건 session 이외의 방법을 사용해주세요.
+    render_template에서 넘겨주지 않아도 Jinja2에서 session.으로 접근 가능해서 편한건 이해하지만....!!
+    사실 use_id, wall_id도 세션 안쓰고 가능함.
+
+  - comment.py
+
+    session['comment_is_secret'] -> parameter 넘겨주세요.
+
+6. comment.py
+   .add_comment(request.form); & .delete_comment_model(comment_id);
+
+  - 파이썬에는 ; 가 없슴다.
+
+  - session['read_post_id'] 도 세션 쓰지말고 해주세용.
+
+7. index.py [수정사항은 아님]
+
+  - @app.errorhandler(404)
+    def page_not_found(e) :
+    함수는 404에러가 떳을때 실행되는 함수인데, 페이지를 만들어서 각자 홈페이지 고유의 404에러화면을 만들어줄 수 있음.
+
+8. timeline.py -> print "timeline hi!!!!!!!!!!!!"
+
+  - print 함수는 꼭 필요한게 아니면 완성된 버전에는 없도록. console.log도 마찬가지
+
+9. timeline.py -> get_5_post()
+ 
+  - 일단 model로 넘어가셔야.
+    get_5_post()라는건 굉장히 STATIC(정적)인 코딩.
+    나중에 한번에 나타낼 포스트 개수를 10개로 올리고싶으면
+    함수를 통째로 고쳐야 함.
+    def get_posts(num_of_posts = 5) :
+    처럼 기본값(default)을 가진 함수로 만들어서 융통성있게 만드는 것을 권장.
+
+10. auth.py > if check == True :
+
+  - if check : 까지만 해도 check가 True이면 if블록을 실행.
+    가독성을 위해서는 check -> checked / email_valid
+    같은 변수명을 사용하면 좋음.
+
+11. 
