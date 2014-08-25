@@ -31,14 +31,21 @@
 			{% elif "wall_host_id" not in session %}
 				<a href="{{ url_for('show_wall') }}" style="text-decoration:none">WALL</a>
 			{% endif %}
+				
+				<a href="{{ url_for('newsfeed') }}" style="text-decoration:none" id="menu_WRITE_POST">MY NEWSFEED</a>
 				<a href="{{ url_for('write_post') }}" style="text-decoration:none" id="menu_WRITE_POST">WRITE POST</a>
-				<a href="{{ url_for('user_list') }}" style="text-decoration:none" id="menu_USER_LIST">USER LIST</a>
+				<a href="{{ url_for('call_user_list') }}" style="text-decoration:none" id="menu_USER_LIST">USER LIST</a>
 				<a href="{{ url_for('find_user_list') }}" style="text-decoration:none" id="menu_FOLLOW_LIST">FOLLOW</a>
 			</div>
 
 			<div id="top_right_menu">
 				<a href="{{ url_for('sign_up') }}" style="text-decoration:none" id="menu_SIGN_UP" >SIGN UP</a>
-				<a href="{{ url_for('log_in') }}" style="text-decoration:none">LOGIN</a>
+				{% if not session %} 
+					<a href="{{ url_for('log_in') }}" style="text-decoration:none">LOGIN</a>
+				{% else %}
+					<a href="{{ url_for('log_out') }}" style="text-decoration:none">LOG OUT</a>
+				{% endif %}
+
 			</div>
 		</div>
 		

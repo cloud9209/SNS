@@ -32,9 +32,27 @@ function find_user()
 				console.log("complete")
 			}
 		});
-
-
 	}
+}
+
+function add_follow_user(user_id)
+{
+	$('#following_user_list').empty();
 	
+	$.ajax({
+		url : '/add_follow_user_controllers',
+		type : 'post',
+		data : {"user_id" : user_id},
+
+		success : function(datas){
+			$('#following_user_list').append(datas);
+		},
+		error : function(){
+			console.log("error");
+		},
+		complete : function(){
+			console.log("complete")
+		}
+	});
 
 }

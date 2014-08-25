@@ -4,7 +4,7 @@ var running =false;
 $(document).ready(function(){
 	var offset = 0;
 	$.ajax({
-		url : '/get_5_post',
+		url : '/get_posts',
 		type : 'post',
 		data : {"offset" : offset},
 
@@ -19,7 +19,6 @@ $(document).ready(function(){
 			offset = offset + 5;
 		}
 	});
-
 
 	$(window).scroll(function() {
 		if($(window).scrollTop() == $(document).height() - $(window).height()){

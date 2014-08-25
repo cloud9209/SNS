@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block head %}
+{{ super() }}
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-2.1.1.min.js')}}"></script>
+	<script type='text/javascript' src="{{ url_for('static', filename = 'js/jquery-ui.min.js')}}"></script>
+	<script src="{{ url_for('static', filename = 'js/newsfeed_ajax.js')}}"></script>
+{% endblock %}
+{% block body %}
+	<div id="newsfeed_div"> 
+	</div>
+
+{% endblock %}

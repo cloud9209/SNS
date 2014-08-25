@@ -26,9 +26,7 @@ def upload_image():
 	
 	add_profile_image(session['user_id'], new_file_name)
 
-
 	return redirect(url_for('profile'))
-
 
 @app.route('/image/profile/<filename>')
 def get_profile_image(filename):

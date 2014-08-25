@@ -1,0 +1,8 @@
+
+<table>
+{% for user in who_I_follow %}
+	<tr>
+		<td>{{ user.followee.username }}</td>
+	</tr>
+{% endfor %}
+</table>

@@ -30,8 +30,8 @@ class Post(db.Model):
 class Comment(db.Model):
 	id				= db.Column(db.Integer, primary_key = True)
 	body			= db.Column(db.Text())
+	is_secret		= db.Column(db.Boolean)
 	created_time	= db.Column(db.DateTime, default = db.func.now())
-
 	post_id			= db.Column(db.Integer, db.ForeignKey('post.id'))
 	Post 			= db.relationship('Post', backref = db.backref('comments', cascade = 'all, delete-orphan', lazy = 'dynamic'))	
 	user_id			= db.Column(db.Integer, db.ForeignKey('user.id'))
