@@ -1,7 +1,6 @@
 from application import app
 from flask import render_template, request, redirect, url_for, session
-from application.models.file_manager import *
-from application.models.user_manager import *
+from application.models import user_manager, file_manager
 
 @app.route('/profile')
 def profile():

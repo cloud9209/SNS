@@ -1,7 +1,6 @@
 from application import db
-from schema import *
+from schema import User
 from flask import session
-import datetime
 
 def call_user_list_model():
 	return User.query.all()
@@ -38,6 +37,7 @@ def add_profile_image(user_id, filename):
 
 	db.session.commit()
 
+<<<<<<< HEAD
 def get_post_by_id(post_id):
 	return Post.query.get(post_id)
 
@@ -47,3 +47,7 @@ def get_all_posts():
 def newsfeed_get_all_posts(celebrities):
 	return Post.query.filter( (Post.wall_id == session['user_id']) | (Post.user_id == session['user_id']) | (Post.user_id.in_(celebrities) ) | \
 										(Post.wall_id.in_(celebrities))).order_by(db.desc(Post.edited_time))
+=======
+def get_all() :
+	return User.query.all()
+>>>>>>> 5a8e1c99585f0641650a3b533e85c2fdc65de49b
